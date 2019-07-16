@@ -65,5 +65,12 @@ quizButton.onclick = function() {
             response += ' you get me! You really get me! You got ' + correctAnswers + ' answers correct!!';
         }
         result.textContent = response;
+        
+          // reset correct answers and name
+        name = '';
+        correctAnswers = 0;
     }  
+
 };
+
+ 
