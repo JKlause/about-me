@@ -22,8 +22,7 @@ quizButton.onclick = function() {
     const confirmed = confirm('Are you sure you are ready to take this quiz ' + name + '? I\'m a pretty complex dude afterall...');
     if(!confirmed) {
         return;
-    } else {
-        //ask user three questions
+    } else { //ask user three questions
 
         // picture question
         const pictureQuestion = prompt('Did I take the picture on this page with my phone (Y/N?)?');
