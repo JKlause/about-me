@@ -1,0 +1,42 @@
+body {
+    background-color: #DED6CB;   
+}
+
+h1 {
+    color: #405178;
+}
+
+h3 {
+    color: #64B0C7
+}
+
+.list {
+    background-color: #736F6D;
+    padding: 5px
+}
+
+img {
+    height: 20vh;
+    float: right;
+    padding-left: 30px;
+    padding-bottom: 10px;
+}
+
+.center-justification {
+    text-align: center
+}
+
+#ul-head {
+    display: block;
+    text-align: center;
+    width: 50%;
+}
+
+#quiz-section {
+    background-color: #BEBBD2;
+    padding: 10px;
+    color: #405178
+}
+
+/* Do this with other list*/
+\

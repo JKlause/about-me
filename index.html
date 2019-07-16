@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="src/main.css">
 </head>
 <body>
-    <section id="heading">
-        <h1>All The Things You Wanted to Know About Joe</h1>
-        <h3>(But Were Afraid To Ask... Or Know...)</h3>
-        <h4>Read carefully: there's a quiz at the end!</h4>
+    <section>
+        <h1 class="center-justification">All The Things You Wanted to Know About Joe</h1>
+        <h3 class="center-justification">(But Were Afraid To Ask... Or Know...)</h3>
+        <h4 class="center-justification">Read carefully: there's a quiz at the end!</h4>
     </section>
 
     <section>
@@ -33,12 +33,14 @@
     </section>
 
     <section>
-        <h2>Other Things I Try To Think About<br>(but end up forgetting)<br>During Coding Class</h2>
-        <ul>
-            <li>My Posture</li>
-            <li>My Maturity</li>
-            <li>Any technical information I am supposed to be using...</li>
-        </ul>
+        <div class="list">
+            <h3 id="ul-head">Other Things I Try To Think About<br>(but end up forgetting)<br>During Coding Class</h3>
+            <ul>
+                <li>My Posture</li>
+                <li>My Maturity</li>
+                <li>Any technical information I am supposed to be using...</li>
+            </ul>
+        </div>
     </section>
 
     <section>
@@ -51,7 +53,7 @@
             I worry about these things. So! If I were going on vacation RIGHT NOW! These would be my top choices
             in order: 
         </p>
-        <ol>
+        <ol section class="list">
             <li>Anywhere in Hawaii</li>
             <li>Victoria, BC</li>
             <li>Aspen, CO</li>
@@ -65,7 +67,7 @@
         </p>
     </section>
 
-    <section id="quiz-section">
+    <section id="quiz-section" class="center-justification">
             <h2>And now! The long awaited QUIZ!!!</h3>
             <button id="quiz-button">Take the Joe Quiz</button>
             <p id="quiz-result">Yeah press that button... I'm grading you.</p>
