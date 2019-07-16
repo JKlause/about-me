@@ -29,7 +29,9 @@ quizButton.onclick = function() {
         const pictureQuestion = prompt('Did I take the picture on this page with my phone (Y/N?)?');
         const pictureAnswer = false;
 
-        if(isYes(pictureQuestion) === pictureAnswer) {
+        if(isYes(pictureQuestion) === 'error') {
+            correctAnswers += 0;
+        } else if(isYes(pictureQuestion) === pictureAnswer) {
             correctAnswers += 1;
         } 
 
@@ -37,7 +39,9 @@ quizButton.onclick = function() {
         const temperatureQuestion = prompt('Am I excited about the umpcoming summer temperatures (Y/N?)?');
         const temperatureAnswer = false;
 
-        if(isYes(temperatureQuestion) === temperatureAnswer) {
+        if(isYes(temperatureQuestion) === 'error') {
+            correctAnswers += 0;
+        } else if(isYes(temperatureQuestion) === temperatureAnswer) {
             correctAnswers += 1;
         } 
 
@@ -45,7 +49,9 @@ quizButton.onclick = function() {
         const hawaiiQuestion = prompt('Would I like to visit Hawaii as soon as possible (Y/N?)?');
         const hawaiiAnswer = true;
 
-        if(isYes(hawaiiQuestion) === hawaiiAnswer) {
+        if(isYes(hawaiiQuestion) === 'error') {
+            correctAnswers += 0;
+        } else if(isYes(hawaiiQuestion) === hawaiiAnswer) {
             correctAnswers += 1;
         } 
         
