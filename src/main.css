@@ -4,26 +4,31 @@ body {
 
 h1 {
     color: #405178;
+    font-size: 30px;
 }
 
 h3 {
-    color: #64B0C7
+    color: #64B0C7;
 }
 
-.list {
-    background-color: #736F6D;
-    padding: 5px
+li {
+    font-size: 18px;
 }
 
 img {
-    height: 20vh;
+    height: 200px;
     float: right;
     padding-left: 30px;
     padding-bottom: 10px;
 }
 
 .center-justification {
-    text-align: center
+    text-align: center;
+}
+
+.list {
+    background-color: #736F6D;
+    padding: 5px;
 }
 
 #ul-head {
@@ -34,9 +39,12 @@ img {
 
 #quiz-section {
     background-color: #BEBBD2;
+    color: #405178;
+    margin: 10%;
+    border: 10px solid #405178;
     padding: 10px;
-    color: #405178
 }
 
-/* Do this with other list*/
-\
+#quiz-button {
+    height: 30px;
+}
