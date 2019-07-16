@@ -1,5 +1,9 @@
+
+
 body {
-    background-color: #DED6CB;   
+    background-color: #DED6CB; 
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
 }
 
 h1 {
@@ -29,6 +33,10 @@ img {
 .list {
     background-color: #736F6D;
     padding: 5px;
+}
+
+.fira-font {
+    font-family: 'Fira Sans', sans-serif;
 }
 
 #ul-head {
