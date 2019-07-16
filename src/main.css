@@ -13,44 +13,10 @@ h3 {
     color: #64B0C7;
 }
 
-li {
-    font-size: 18px;
-}
-
-img {
-    height: 200px;
-    float: right;
-    padding-left: 30px;
-    padding-bottom: 10px;
-}
-
 .center-justification {
     text-align: center;
 }
 
-.list {
-    background-color: #736F6D;
-    padding: 5px;
-}
-
 .fira-font {
     font-family: 'Fira Sans', sans-serif;
-}
-
-#ul-head {
-    display: block;
-    text-align: center;
-    width: 50%;
-}
-
-#quiz-section {
-    background-color: #BEBBD2;
-    color: #405178;
-    margin: 10%;
-    border: 10px solid #405178;
-    padding: 10px;
-}
-
-#quiz-button {
-    height: 30px;
 }

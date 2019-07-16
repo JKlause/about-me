@@ -1,4 +1,4 @@
-import isYes from '../src/is-yes.js';
+import isYes from './is-yes.js';
 
 //refereced Dom Elements
 const quizButton = document.getElementById('quiz-button');
