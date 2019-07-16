@@ -35,6 +35,7 @@ quizButton.onclick = function() {
         // picture question
         const pictureQuestion = prompt('Did I take the picture on this page with my phone (Y/N?)?');
         const pictureAnswer = false;
+        
         if(pictureQuestion === null) {
             correctAnswers += 0;
         } else if(isYes(pictureQuestion) === 'error') {
