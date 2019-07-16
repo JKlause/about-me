@@ -4,6 +4,11 @@ body {
     font-size: 20px;
 }
 
+header {
+    text-align: center;
+    font-family: 'Fira Sans', sans-serif;
+}
+
 h1 {
     color: #405178;
     font-size: 30px;
@@ -13,10 +18,18 @@ h3 {
     color: #64B0C7;
 }
 
+nav {
+    text-align: left;
+}
+
 .center-justification {
     text-align: center;
 }
 
 .fira-font {
     font-family: 'Fira Sans', sans-serif;
+}
+
+.hidden {
+    display: none;
 }
