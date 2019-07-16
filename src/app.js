@@ -79,5 +79,3 @@ quizButton.onclick = function() {
     }  
 
 };
-
- 
