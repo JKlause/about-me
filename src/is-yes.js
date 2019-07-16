@@ -1,3 +1,5 @@
+export default isYes;
+
 function isYes(text) {
     text = text.toLowerCase();
     text = text.charAt(0);
@@ -7,5 +9,3 @@ function isYes(text) {
         return false;
     }
 }
-
-export default isYes;
