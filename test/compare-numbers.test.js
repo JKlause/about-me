@@ -30,11 +30,20 @@ test('compare number is equal to', function(assert) {
     assert.equal(result, expected);
 });
 
-
+// unable to figure out test for error, though function is throwing error
 test('test for error guess NaN', function(assert) {
     const guess = 12;
     const correctNumber = 'd';
-    const expected = 'error';
+    const expected = 'Your input is not a number, dumb ass.';
+    const result = compareNumbers(guess, correctNumber);
+
+    assert.throws(result, expected);
+});
+
+test('test for error correctNumbner NaN', function(assert) {
+    const guess = 12;
+    const correctNumber = 12;
+    const expected = 'Your input is not a number, dumb ass.';
     const result = compareNumbers(guess, correctNumber);
 
     assert.throws(result, expected);
