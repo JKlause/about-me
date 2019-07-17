@@ -61,9 +61,6 @@ winResetButton.addEventListener('click', () => {
     buttonControler(button);
 });
 
-// work on css
-// test for invalid numbers
-
 function addHidden(elementName) {
     elementName.classList.add('hidden');
 }
