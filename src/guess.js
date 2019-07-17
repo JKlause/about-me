@@ -17,7 +17,7 @@ getNumber();
 
 button.addEventListener('click', () => { 
     const guess = parseInt(userGuess.value);
-    
+
     if(guess > 20 || guess < 1) {
         alert('Your guess must be a whole number between 1 and 20');
     }
@@ -38,13 +38,14 @@ button.addEventListener('click', () => {
     }
 
     triesTracker();
- 
+
     if(numberTries === 0 && result !== 0) {
         removeHidden(loseSection);
         addHidden(tooLow);
         addHidden(tooHigh);
         buttonControler(button);
     }
+
 });
 
 loseResetButton.addEventListener('click', () => {
