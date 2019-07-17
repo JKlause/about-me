@@ -29,3 +29,13 @@ test('compare number is equal to', function(assert) {
 
     assert.equal(result, expected);
 });
+
+
+test('test for error guess NaN', function(assert) {
+    const guess = 12;
+    const correctNumber = 'd';
+    const expected = 'error';
+    const result = compareNumbers(guess, correctNumber);
+
+    assert.throws(result, expected);
+});
