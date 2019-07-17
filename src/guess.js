@@ -9,14 +9,15 @@ const winSection = document.getElementById('win-section');
 const loseSection = document.getElementById('lose-section');
 const winResetButton = document.getElementById('win-reset-button');
 const loseResetButton = document.getElementById('lose-reset-button');
+let numberTries;
+let correctNumber;
 
-let numberTries = 4;
-tries.textContent = numberTries;
-
-let correctNumber = Math.round((Math.random() * 19) + 1);
+resetTries();
+getNumber();
 
 button.addEventListener('click', () => { 
     const guess = parseInt(userGuess.value);
+    console.log(correctNumber);
 
     if(guess > 20 || guess < 1) {
         alert('Your guess must be a whole number between 1 and 20');
@@ -25,45 +26,71 @@ button.addEventListener('click', () => {
     const result = compareNumbers(guess, correctNumber);
 
     if(result === 0) {
-        winSection.classList.remove('hidden');
-        tooHigh.classList.add('hidden');
-        tooLow.classList.add('hidden');
-        button.disabled = true;
+        removeHidden(winSection);
+        addHidden(tooHigh);
+        addHidden(tooLow);
+        buttonControler(button);
     } else if(result === 1) {
-        tooHigh.classList.remove('hidden');
-        tooLow.classList.add('hidden');
+        removeHidden(tooHigh);
+        addHidden(tooLow);
     } else if(result === -1) {
-        tooLow.classList.remove('hidden');
-        tooHigh.classList.add('hidden');
+        removeHidden(tooLow);
+        addHidden(winSection);
     }
 
-    numberTries -= 1;
-    tries.textContent = numberTries;
+    triesTracker();
  
     if(numberTries === 0) {
-        loseSection.classList.remove('hidden');
-        tooHigh.classList.add('hidden');
-        tooLow.classList.add('hidden');
-        button.disabled = true;
+        removeHidden(loseSection);
+        addHidden(tooLow);
+        addHidden(tooHigh);
+        buttonControler(button);
     }
 });
 
 loseResetButton.addEventListener('click', () => {
-    numberTries = 4;
-    tries.textContent = numberTries;
-    correctNumber = Math.round((Math.random() * 20));
-    loseSection.classList.add('hidden');
-    button.disabled = false;
+    resetTries();
+    getNumber();
+    addHidden(loseSection);
+    buttonControler(button);
 });
 
 winResetButton.addEventListener('click', () => {
-    numberTries = 4;
-    tries.textContent = numberTries;
-    correctNumber = Math.round((Math.random() * 20));
-    winSection.classList.add('hidden');
-    button.disabled = false;
+    resetTries();
+    getNumber();
+    addHidden(winSection);
+    buttonControler(button);
 });
 
 // work on css
-// move UI work into functions
 // test for invalid numbers
+
+function addHidden(elementName) {
+    elementName.classList.add('hidden');
+}
+
+function removeHidden(elementName) {
+    elementName.classList.remove('hidden');
+}
+
+function buttonControler(elementName) {
+    if(elementName.disabled === true) {
+        elementName.disabled = false;
+    } else {
+        elementName.disabled = true;
+    }
+}
+
+function resetTries() {
+    numberTries = 4;
+    tries.textContent = numberTries;
+}
+
+function triesTracker() {
+    numberTries -= 1;
+    tries.textContent = numberTries;
+}
+
+function getNumber() {
+    correctNumber = Math.round((Math.random() * 20));
+}
