@@ -15,7 +15,6 @@ tries.textContent = numberTries;
 
 let correctNumber = Math.round((Math.random() * 19) + 1);
 
-
 button.addEventListener('click', () => { 
     const guess = parseInt(userGuess.value);
 
@@ -64,3 +63,7 @@ winResetButton.addEventListener('click', () => {
     winSection.classList.add('hidden');
     button.disabled = false;
 });
+
+// work on css
+// move UI work into functions
+// test for invalid numbers

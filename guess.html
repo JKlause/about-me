@@ -29,7 +29,7 @@
     </section>
 
     <section>
-        <p id="tries-left">Number of guesses left: <span id="tries"></span></p>
+        <p>Number of guesses left: <span id="tries"></span></p>
         Guess Your Number Here:<input id="user-guess" type="number">
         <br>
         <button id="button">Submit Your Guess</span></button>
@@ -38,18 +38,21 @@
     <section id="result">
         <h2 id="too-high" class="hidden">Your guess was too high.</h2>
         <h2 id="too-low" class="hidden">Your guess was too low.</h2>
+        
         <section id="win-section" class="hidden">
             <h2 >Congrats! You Win!!!</h2>
             <br>
             <h3>Want to play again?</h3>
             <button id="win-reset-button">Reset Game</button>
         </section>
+
         <section id="lose-section" class="hidden">
              <h2>You ran out of tries. I will now run an infinite loop and crash your browser.</h2>
              <br>
              <h3>Just kidding, press this button to reset the game and try again!</h3>
              <button id="lose-reset-button">Reset Game</button>
          </section>
+
     </section>
 
     <script type="module" src="src/guess.js"></script>
