@@ -88,5 +88,5 @@ function triesTracker() {
 }
 
 function getNumber() {
-    correctNumber = Math.round((Math.random() * 20));
+    correctNumber = Math.round((Math.random() * 20) + 1);
 }
