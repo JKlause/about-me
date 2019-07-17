@@ -1,34 +1,66 @@
-// what do i need to import from other js files
 import compareNumbers from './compareNumbers.js';
 
-// what do i need from the dom
 const tries = document.getElementById('tries');
 const userGuess = document.getElementById('user-guess');
 const button = document.getElementById('button');
 const tooHigh = document.getElementById('too-high');
 const tooLow = document.getElementById('too-low');
-const winMsg = document.getElementById('win-msg');
-const loseMsg = document.getElementById('lose-msg');
+const winSection = document.getElementById('win-section');
+const loseSection = document.getElementById('lose-section');
+const winResetButton = document.getElementById('win-reset-button');
+const loseResetButton = document.getElementById('lose-reset-button');
 
-//what state do i need to track
 let numberTries = 4;
-const correctNumber = 17;
+tries.textContent = numberTries;
+
+let correctNumber = Math.round((Math.random() * 19) + 1);
 
 
-//what events do i need to listen to
 button.addEventListener('click', () => { 
-
-    // convert guess to a number
     const guess = parseInt(userGuess.value);
-    //compare numbers
+
+    if(guess > 20 || guess < 1) {
+        alert('Your guess must be a whole number between 1 and 20');
+    }
+
     const result = compareNumbers(guess, correctNumber);
 
-    // decrease number of tries
     if(result === 0) {
-        console.log('hello');
+        winSection.classList.remove('hidden');
+        tooHigh.classList.add('hidden');
+        tooLow.classList.add('hidden');
+        button.disabled = true;
+    } else if(result === 1) {
+        tooHigh.classList.remove('hidden');
+        tooLow.classList.add('hidden');
+    } else if(result === -1) {
+        tooLow.classList.remove('hidden');
+        tooHigh.classList.add('hidden');
     }
-    // display number of tries
 
-    // display correct message
-            // disable button*/
+    numberTries -= 1;
+    tries.textContent = numberTries;
+ 
+    if(numberTries === 0) {
+        loseSection.classList.remove('hidden');
+        tooHigh.classList.add('hidden');
+        tooLow.classList.add('hidden');
+        button.disabled = true;
+    }
+});
+
+loseResetButton.addEventListener('click', () => {
+    numberTries = 4;
+    tries.textContent = numberTries;
+    correctNumber = Math.round((Math.random() * 20));
+    loseSection.classList.add('hidden');
+    button.disabled = false;
+});
+
+winResetButton.addEventListener('click', () => {
+    numberTries = 4;
+    tries.textContent = numberTries;
+    correctNumber = Math.round((Math.random() * 20));
+    winSection.classList.add('hidden');
+    button.disabled = false;
 });
