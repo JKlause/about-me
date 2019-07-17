@@ -18,9 +18,9 @@
         </nav>
     </header>
 
-    <section>
-        <h2>THE RULES</h2>
-        <ul>
+    <section class="list">
+        <h3 class="center-justification fira-font">THE RULES</h3>
+        <ul id="rules-list">
             <li>Using the arrows in the number box, enter a round number between 1 and 20</li>
             <li>Hit the button to check if you guessed correctly</li>
             <li>You have four guesses</li>
@@ -28,14 +28,14 @@
         </ul>
     </section>
 
-    <section>
+    <section id="guessing-section">
         <p>Number of guesses left: <span id="tries"></span></p>
         Guess Your Number Here:<input id="user-guess" type="number">
         <br>
         <button id="button">Submit Your Guess</span></button>
     </section>
 
-    <section id="result">
+    <section id="result" class="center-justification">
         <h2 id="too-high" class="hidden">Your guess was too high.</h2>
         <h2 id="too-low" class="hidden">Your guess was too low.</h2>
         
