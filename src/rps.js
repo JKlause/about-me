@@ -3,8 +3,11 @@ import getPlay from './get-play.js';
 const winCount = document.getElementById('win-count');
 const loseCount = document.getElementById('lose-count');
 const throwButton = document.getElementById('throw-button');
-let resultMessage = document.getElementById('message');
+const resultMessage = document.getElementById('message');
 const compChoiceImg = document.getElementById('comp-choice-img');
+
+let wins = 0;
+let losses = 0;
 
 throwButton.addEventListener('click', () => {
     const computerThrow = getPlay();
@@ -15,12 +18,21 @@ throwButton.addEventListener('click', () => {
 
     const userThrow = document.querySelector('input:checked');
 
-    console.log(userThrow.value, computerThrow);
-
     if(userThrow.value === computerThrow) {
         resultMessage.textContent = 'We Tied! Stop Copying Me';
     }
-    if(userThrow.value === )
+    if(userThrow.value === 'rock' && computerThrow === 'scissors' ||
+        userThrow.value === 'paper' && computerThrow === 'rock' ||
+        userThrow.value === 'scissors' && computerThrow === 'paper') {
+        resultMessage.textContent = 'I Lost! Stop Cheatin';
+        wins++;
+        winCount.textContent = wins;
+    }
+    if(computerThrow === 'rock' && userThrow.value === 'scissors' ||
+        computerThrow === 'paper' && userThrow.value === 'rock' ||
+        computerThrow === 'scissors' && userThrow.value === 'paper') {
+        resultMessage.textContent = 'I Won! Loser...';
+        losses++;
+        loseCount.textContent = losses;
+    }
 });
-// determine winner
-// tally wins and losses of player
