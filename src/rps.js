@@ -1,4 +1,5 @@
 import getPlay from './get-play.js';
+import { rock, paper, scissors } from './get-play.js';
 
 const winCount = document.getElementById('win-count');
 const loseCount = document.getElementById('lose-count');
@@ -17,21 +18,20 @@ throwButton.addEventListener('click', () => {
     compChoiceImg.classList.remove('hidden');
 
     const userThrow = document.querySelector('input:checked');
-
+    console.log(userThrow.value, computerThrow, rock);
     if(userThrow.value === computerThrow) {
-        updateResultMessage('We Tied! Stop Copying Me');
-       // resultMessage.textContent = 'We Tied! Stop Copying Me';
+        updateResultMessage('We Tied! Stop Copying Me...');
     }
-    if(userThrow.value === 'rock' && computerThrow === 'scissors' ||
-        userThrow.value === 'paper' && computerThrow === 'rock' ||
-        userThrow.value === 'scissors' && computerThrow === 'paper') {
-        updateResultMessage('I Lost! Stop Cheatin');
+    if(userThrow.value === rock && computerThrow === scissors ||
+        userThrow.value === paper && computerThrow === rock ||
+        userThrow.value === scissors && computerThrow === paper) {
+        updateResultMessage('I Lost! Stop Cheatin!');
         wins++;
         winCount.textContent = wins;
     }
-    if(computerThrow === 'rock' && userThrow.value === 'scissors' ||
-        computerThrow === 'paper' && userThrow.value === 'rock' ||
-        computerThrow === 'scissors' && userThrow.value === 'paper') {
+    if(computerThrow === rock && userThrow.value === scissors ||
+        computerThrow === paper && userThrow.value === rock ||
+        computerThrow === scissors && userThrow.value === paper) {
         updateResultMessage('I Won! Loser...');
         losses++;
         loseCount.textContent = losses;

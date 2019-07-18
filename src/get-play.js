@@ -1,5 +1,4 @@
 export default function getPlay() {
-    //generates a random number 0, 1, 2
     const randomNumber = Math.floor((Math.random() * 3));
     const computerThrow = getPlayFromNumber(randomNumber);
     return computerThrow;
@@ -14,3 +13,7 @@ export function getPlayFromNumber(randomNumber) {
         return 'scissors';
     }
 }
+
+export const rock = 'rock';
+export const paper = 'paper';
+export const scissors = 'scissors';
