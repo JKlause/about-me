@@ -67,7 +67,7 @@
             </h2>
             <button class="button" id="start-betting-game">Start The Betting Game</button>
             
-            <section id="betting-game">
+            <section id="betting-game" class="invisible">
                 <div id="rules" class="list">
                     <h3>
                         The Rules
@@ -80,10 +80,10 @@
                     </ul>
                 </div>
                 <p id="record">
-                    <span>Money You Have: $<span id="win-count">100</span></span>
+                    <span>Money You Have: $<span id="money-user-has">100</span></span>
                 </p>
                 <p>
-                    Place Your Bet Here: $<input id="user-bet" disabled="false" max="100" min="1" type="number" >
+                    Place Your Bet Here: $<input id="user-bet" max="100" min="1" type="number">
                     <br>
                     <br>
                     <button class="button" id="load-bet">Load Your Bet</button>
