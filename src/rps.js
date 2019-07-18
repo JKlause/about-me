@@ -19,20 +19,25 @@ throwButton.addEventListener('click', () => {
     const userThrow = document.querySelector('input:checked');
 
     if(userThrow.value === computerThrow) {
-        resultMessage.textContent = 'We Tied! Stop Copying Me';
+        updateResultMessage('We Tied! Stop Copying Me');
+       // resultMessage.textContent = 'We Tied! Stop Copying Me';
     }
     if(userThrow.value === 'rock' && computerThrow === 'scissors' ||
         userThrow.value === 'paper' && computerThrow === 'rock' ||
         userThrow.value === 'scissors' && computerThrow === 'paper') {
-        resultMessage.textContent = 'I Lost! Stop Cheatin';
+        updateResultMessage('I Lost! Stop Cheatin');
         wins++;
         winCount.textContent = wins;
     }
     if(computerThrow === 'rock' && userThrow.value === 'scissors' ||
         computerThrow === 'paper' && userThrow.value === 'rock' ||
         computerThrow === 'scissors' && userThrow.value === 'paper') {
-        resultMessage.textContent = 'I Won! Loser...';
+        updateResultMessage('I Won! Loser...');
         losses++;
         loseCount.textContent = losses;
     }
 });
+
+function updateResultMessage(message) {
+    resultMessage.textContent = message;
+}
