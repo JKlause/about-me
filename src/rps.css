@@ -2,8 +2,22 @@ label {
     cursor: pointer;
 }
 
+section {
+    display: inline-block;
+}
+
 input {
     display: none;
+}
+
+input:checked + .radio-image {
+    border: 5px solid #64B0C7;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.9);
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
 }
 
 .button {
@@ -12,14 +26,9 @@ input {
 }
 
 .radio-image {
-    height: 100px;
-    margin: 0 10px;
-    border: 5px solid transparent;
-}
-
-input:checked + .radio-image {
-    border: 5px solid #64B0C7;
-    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.9);
+    width: 20%;
+    margin: 0 2px;
+    border: 1px solid transparent;
 }
 
 #record {
@@ -32,10 +41,26 @@ input:checked + .radio-image {
 }
 
 #comp-choice-img {
-    height: 300px;
+    height: 30vw;
 }
 
 #make-your-choice {
     color: #405178;
     font-family: 'Fira Sans', sans-serif;
+}
+
+#game-play {
+    width: 48vw;
+}
+
+#betting {
+    width: 48vw;
+}
+
+#user-bet {
+    display: inline-block;
+}
+
+#rules {
+    margin: 5% 0;
 }

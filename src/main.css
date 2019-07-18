@@ -29,12 +29,20 @@ nav {
     text-align: center;
 }
 
+.left-justification {
+    text-align: left;
+}
+
 .fira-font {
     font-family: 'Fira Sans', sans-serif;
 }
 
 .hidden {
     display: none;
+}
+
+.invisible {
+    visibility: hidden;
 }
 
 .list {

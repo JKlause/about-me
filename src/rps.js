@@ -15,10 +15,10 @@ throwButton.addEventListener('click', () => {
     
     const src = 'Assets/rps/' + computerThrow + '.jpg';
     compChoiceImg.src = src;
-    compChoiceImg.classList.remove('hidden');
+    compChoiceImg.classList.remove('invisible');
 
     const userThrow = document.querySelector('input:checked');
-    console.log(userThrow.value, computerThrow, rock);
+
     if(userThrow.value === computerThrow) {
         updateResultMessage('We Tied! Stop Copying Me...');
     }
