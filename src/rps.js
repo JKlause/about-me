@@ -1,6 +1,7 @@
 import getPlay from './get-play.js';
 import { rock, paper, scissors } from './get-play.js';
 
+
 //rock paper scissors game portion
 
 const winCount = document.getElementById('win-count');
@@ -18,7 +19,7 @@ throwButton.addEventListener('click', () => {
     
     const src = 'Assets/rps/' + computerThrow + '.jpg';
     compChoiceImg.src = src;
-    compChoiceImg.classList.remove('invisible');
+    revealOnPage(compChoiceImg);
 
     const userThrow = document.querySelector('input:checked');
 
@@ -59,19 +60,17 @@ let userBetAmt;
 let moneyUserHasAmt;
 
 startBettingGameButton.addEventListener('click', () => {
-    bettingGame.classList.remove('invisible');
-    startBettingGameButton.disabled = true;
-    throwButton.disabled = true;
+    revealOnPage(bettingGame);
+    turnOffButton(startBettingGameButton);
+    turnOffButton(throwButton);
 });
 
 loadBetButton.addEventListener('click', () => {
     userBetAmt = parseInt(userBet.value);
     moneyUserHasAmt = parseInt(moneyUserHas.textContent);
-
-    compChoiceImg.classList.add('invisible');
+    hideOnPage(compChoiceImg);
     updateMessages(betResults, 'Watch me win.');
     updateMessages(resultMessage, 'Make your choice, punk.');
-    loadBetButton.disabled = true;
 
     if(userBetAmt > moneyUserHasAmt) {
         alert('You don\'t have that much money!');
@@ -81,7 +80,8 @@ loadBetButton.addEventListener('click', () => {
         
         if(allInConfirmation === true) {
             alert('Livin on the edge your bet has been placed. Make your choice and throw!');
-            throwButton.disabled = false;
+            turnOnButton(throwButton);
+            loadBetButton.disabled = true;
         }
 
     } else if(userBetAmt < moneyUserHasAmt) {
@@ -89,9 +89,9 @@ loadBetButton.addEventListener('click', () => {
         
         if(betConfirmation === true) {
             alert('Your bet has been placed. Make your choice and throw!');
-            throwButton.disabled = false;
+            turnOnButton(throwButton);
+            turnOffButton(loadBetButton);
         }
-
     }
 });
 
@@ -103,24 +103,26 @@ throwButton.addEventListener('click', () => {
         if(winLose === 'win') {
             moneyUserHas.textContent = (moneyUserHasAmt + userBetAmt);
             updateMessages(betResults, 'How dare you take my money! Let\'s play again!');
-            throwButton.disabled = true;
-            loadBetButton.disabled = false;
+            turnOffButton(throwButton);
+            turnOnButton(loadBetButton);
+
         } else if(winLose === 'lose') {
             moneyUserHas.textContent = (moneyUserHasAmt - userBetAmt);
             updateMessages(betResults, 'HAHAHA You lost your money to me! Let\'s play again!');
-            throwButton.disabled = true;
-            loadBetButton.disabled = false;
+            turnOffButton(throwButton);
+            turnOnButton(loadBetButton);
+
         } else if(winLose === 'tie') {
             moneyUserHas.textContent = moneyUserHasAmt;
             updateMessages(betResults, 'We tied... but I\'ll get your money soon.');
-            throwButton.disabled = true;
-            loadBetButton.disabled = false;
+            turnOffButton(throwButton);
+            turnOnButton(loadBetButton);
         }
     }
     if(moneyUserHas.textContent === '0') {
-        startBettingGameButton.disabled = true;
-        throwButton.disabled = true;
-        loadBetButton.disabled = true;
+        turnOffButton(startBettingGameButton);
+        turnOffButton(throwButton);
+        turnOffButton(loadBetButton);
         updateMessages(betResults, 'You lost all your money. Go away.');
         updateMessages(resultMessage, 'Time for you to leave!');
     }
@@ -129,4 +131,20 @@ throwButton.addEventListener('click', () => {
 
 function updateMessages(el, message) {
     el.textContent = message;
+}
+
+function turnOnButton(buttonName) {
+    buttonName.disabled = false;
+}
+
+function turnOffButton(buttonName) {
+    buttonName.disabled = true;
+}
+
+function revealOnPage(el) {
+    el.classList.remove('invisible');
+}
+
+function hideOnPage(el) {
+    el.classList.add('invisible');
 }
