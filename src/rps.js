@@ -44,6 +44,7 @@ throwButton.addEventListener('click', () => {
     }
 });
 
+
 //betting game portion
 
 
@@ -66,6 +67,11 @@ startBettingGameButton.addEventListener('click', () => {
 loadBetButton.addEventListener('click', () => {
     userBetAmt = parseInt(userBet.value);
     moneyUserHasAmt = parseInt(moneyUserHas.textContent);
+
+    compChoiceImg.classList.add('invisible');
+    updateMessages(betResults, 'Watch me win.');
+    updateMessages(resultMessage, 'Make your choice, punk.');
+    loadBetButton.disabled = true;
 
     if(userBetAmt > moneyUserHasAmt) {
         alert('You don\'t have that much money!');
@@ -98,13 +104,17 @@ throwButton.addEventListener('click', () => {
             moneyUserHas.textContent = (moneyUserHasAmt + userBetAmt);
             updateMessages(betResults, 'How dare you take my money! Let\'s play again!');
             throwButton.disabled = true;
+            loadBetButton.disabled = false;
         } else if(winLose === 'lose') {
             moneyUserHas.textContent = (moneyUserHasAmt - userBetAmt);
             updateMessages(betResults, 'HAHAHA You lost your money to me! Let\'s play again!');
             throwButton.disabled = true;
+            loadBetButton.disabled = false;
         } else if(winLose === 'tie') {
             moneyUserHas.textContent = moneyUserHasAmt;
-            updateMessages(betResults, 'We tied... but I\'ll get your money');
+            updateMessages(betResults, 'We tied... but I\'ll get your money soon.');
+            throwButton.disabled = true;
+            loadBetButton.disabled = false;
         }
     }
     if(moneyUserHas.textContent === '0') {
