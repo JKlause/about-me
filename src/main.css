@@ -20,8 +20,9 @@ h3 {
 
 nav {
     text-align: left;
+    padding: 3px 0 8px 3%;
+    font-size: 14px;
     font-family: 'Fira Sans', sans-serif;
-    padding: 3px 0 8px 3% 
 }
 
 .center-justification {

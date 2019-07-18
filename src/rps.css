@@ -1,0 +1,41 @@
+label {
+    cursor: pointer;
+}
+
+input {
+    display: none;
+}
+
+.button {
+    height: 50px;
+    width: 120px;
+}
+
+.radio-image {
+    height: 100px;
+    margin: 0 10px;
+    border: 5px solid transparent;
+}
+
+input:checked + .radio-image {
+    border: 5px solid #64B0C7;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.9);
+}
+
+#record {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin: auto;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+#computer-choice {
+    height: 300px;
+}
+
+#make-your-choice {
+    color: #405178;
+    font-family: 'Fira Sans', sans-serif;
+}

@@ -5,8 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rock Paper Scissors</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Work+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/rps.css">
 </head>
 <body>
+    <header>
+        <nav>
+                <a href="./">About Me</a>
+                <a href="guess.html">Guess A Number</a>
+                <a href="rps.html">Rock Paper Scissors</a>
+        </nav>
+        <h1>
+            Rock Paper Scissors!
+        </h1>
+        <h3>
+            You feelin' lucky??
+        </h3>
+    </header>
+
+    <main class="center-justification" >
+        <h2 id="make-your-choice">
+            Make your choice!
+        </h2>
+
+        <p id="record">
+            <span>Wins: <span class="count" id="win-count"></span></span>
+            <span>Losses: <span class="count" id="lose-count"></span></span>
+        </p>
+        <p>
+            <label>
+                <input type="radio" name="user-choice" value="rock" checked>
+                <img class="radio-image" src="Assets/rock.jpg">
+            </label>
+            <label>
+                <input type="radio" name="user-choice" value="paper">
+                <img class="radio-image" src="Assets/paper.jpg">
+            </label>
+            <label>
+                <input type="radio" name="user-choice" value="scissors">
+                <img class="radio-image" src="Assets/scissors.jpg">
+            </label>
+        </p>
+        <p>
+            <button class="button" id="throw-button">Throw</button>
+        </p>
+
+        <p id="message">
+            Make your choice, bitch.
+        </p>
+
+        <p id="result">
+            <img id="computer-choice" class="hidden" src="Assets/rock.jpg">
+        </p>
+    </main>
     
+    <script type="module" src="src/rps.js"></script>
 </body>
 </html>

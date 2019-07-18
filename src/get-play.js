@@ -1,0 +1,16 @@
+export default function getPlay() {
+    //generates a random number 0, 1, 2
+    const randomNumber = Math.floor((Math.random() * 3));
+    const computerThrow = getPlayFromNumber(randomNumber);
+    return computerThrow;
+}
+
+export function getPlayFromNumber(randomNumber) {
+    if(randomNumber === 0) {
+        return 'rock';
+    } else if(randomNumber === 1) {
+        return 'paper';
+    } else if(randomNumber === 2) {
+        return 'scissors';
+    }
+}
