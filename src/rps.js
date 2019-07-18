@@ -24,6 +24,7 @@ throwButton.addEventListener('click', () => {
 
     if(userThrow.value === computerThrow) {
         updateMessages(resultMessage, 'We Tied! Stop Copying Me...');
+        winLose = 'tie';
     }
     if(userThrow.value === rock && computerThrow === scissors ||
         userThrow.value === paper && computerThrow === rock ||
@@ -89,9 +90,11 @@ loadBetButton.addEventListener('click', () => {
 });
 
 throwButton.addEventListener('click', () => {
+    moneyUserHasAmt = parseInt(moneyUserHas.textContent);
+    userBetAmt = parseInt(userBet.value);
+
     if(startBettingGameButton.disabled === true && throwButton.disabled === false) {
         if(winLose === 'win') {
-            console.log(moneyUserHasAmt + userBetAmt);
             moneyUserHas.textContent = (moneyUserHasAmt + userBetAmt);
             updateMessages(betResults, 'How dare you take my money! Let\'s play again!');
             throwButton.disabled = true;
@@ -99,37 +102,21 @@ throwButton.addEventListener('click', () => {
             moneyUserHas.textContent = (moneyUserHasAmt - userBetAmt);
             updateMessages(betResults, 'HAHAHA You lost your money to me! Let\'s play again!');
             throwButton.disabled = true;
+        } else if(winLose === 'tie') {
+            moneyUserHas.textContent = moneyUserHasAmt;
+            updateMessages(betResults, 'We tied... but I\'ll get your money');
         }
     }
+    if(moneyUserHas.textContent === '0') {
+        startBettingGameButton.disabled = true;
+        throwButton.disabled = true;
+        loadBetButton.disabled = true;
+        updateMessages(betResults, 'You lost all your money. Go away.');
+        updateMessages(resultMessage, 'Time for you to leave!');
+    }
 });
-
-if(moneyUserHas.textContent === '0') {
-    startBettingGameButton.disabled = true;
-    throwButton.disabled = true;
-    loadBetButton.disabled = true;
-    updateMessages(betResults, 'You lost all your money. Go away.');
-    updateMessages(resultMessage, 'Time for you to leave!');
-}
-//         moneyUserHas.textContent = (moneyUserHasAmt + userBetAmt);
-//         console.log(moenyUserHas.textContent, moneyUserHasAmt, userBetAmt)
-//     }
-// }
-
-
-
 
 
 function updateMessages(el, message) {
     el.textContent = message;
 }
-
-//user loads bet
-    //turns on throw button\
-    //check to see if user actualy bets
-//result
-    //if user wins, they get money
-    //if user loses, they loose money
-    //if tie, user loses $1
-    //reset throw 
-//when loser out of money
-    //disable load bet, throw
