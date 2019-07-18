@@ -15,15 +15,17 @@ let correctNumber;
 resetTries();
 getNumber();
 
+
 button.addEventListener('click', () => { 
     const guess = parseInt(userGuess.value);
+    const result = compareNumbers(guess, correctNumber);
+
 
     if(guess > 20 || guess < 1) {
         alert('Your guess must be a whole number between 1 and 20');
     }
 
-    const result = compareNumbers(guess, correctNumber);
-
+    
     if(result === 0) {
         removeHidden(winSection);
         addHidden(tooHigh);
@@ -37,6 +39,7 @@ button.addEventListener('click', () => {
         addHidden(winSection);
     }
 
+
     triesTracker();
 
     if(numberTries === 0 && result !== 0) {
@@ -48,6 +51,7 @@ button.addEventListener('click', () => {
 
 });
 
+
 loseResetButton.addEventListener('click', () => {
     resetTries();
     getNumber();
@@ -55,12 +59,15 @@ loseResetButton.addEventListener('click', () => {
     buttonControler(button);
 });
 
+
 winResetButton.addEventListener('click', () => {
     resetTries();
     getNumber();
     addHidden(winSection);
     buttonControler(button);
 });
+
+
 
 function addHidden(elementName) {
     elementName.classList.add('hidden');

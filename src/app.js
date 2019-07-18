@@ -1,38 +1,38 @@
 import isYes from './is-yes.js';
 
-//refereced Dom Elements
+
 const quizButton = document.getElementById('quiz-button');
 const result = document.getElementById('quiz-result');
 
-//needed variables
 let name = '';
 let correctAnswers = 0;
 
 
+
 quizButton.onclick = function() {
 
-    //get user name
     const firstName = prompt('What\'s your first name?');
     if(firstName === null) {
         alert('Names are important to me. Restart the quiz');
         return;
     }
+
     name += firstName;
+    
 
     const lastName = prompt('What\'s your last name?');
     if(lastName === null) {
         alert('Names are important to me. Restart the quiz');
         return;
     }
+
     name += ' ' + lastName;
 
-     // double check user wants to take quiz
     const confirmed = confirm('Are you sure you are ready to take this quiz ' + name + '? I\'m a pretty complex dude afterall...');
     if(!confirmed) {
         return;
-    } else { //ask user three questions
 
-        // picture question
+    } else { 
         const pictureQuestion = prompt('Did I take the picture on this page with my phone (Y/N?)?');
         const pictureAnswer = false;
         
@@ -44,7 +44,6 @@ quizButton.onclick = function() {
             correctAnswers += 1;
         } 
 
-        // temperature question
         const temperatureQuestion = prompt('Am I excited about the umpcoming summer temperatures (Y/N?)?');
         const temperatureAnswer = false;
 
@@ -56,7 +55,6 @@ quizButton.onclick = function() {
             correctAnswers += 1;
         } 
 
-        // hawaii question
         const hawaiiQuestion = prompt('Would I like to visit Hawaii as soon as possible (Y/N?)?');
         const hawaiiAnswer = true;
 
@@ -68,11 +66,12 @@ quizButton.onclick = function() {
             correctAnswers += 1;
         } 
 
-        //get correctAnswers into percentage
+
         correctAnswers = Math.round((correctAnswers / 3) * 100);
         
-        // response creations
+
         let response = 'Well ' + name + ',';
+
         if(correctAnswers === 0) {
             response += ' you might want to read that again considering you got ' + correctAnswers + '% answers correct.';
         } 
@@ -85,11 +84,12 @@ quizButton.onclick = function() {
         else if(correctAnswers === 100) {
             response += ' you get me! You really get me! You got ' + correctAnswers + '% answers correct!!';
         }
+
         result.textContent = response;
         
-          // reset correct answers and name for next time throught quiz
+
+        // reset for next test
         name = '';
         correctAnswers = 0;
     }  
-
 };
