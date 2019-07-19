@@ -59,14 +59,6 @@ throwButton.addEventListener('click', () => {
     userBetAmt = parseInt(userBet.value);
 
     betResult();
-
-    if(moneyUserHas.textContent === '0') {
-        turnOffButton(startBettingGameButton);
-        turnOffButton(throwButton);
-        turnOffButton(loadBetButton);
-        updateMessages(betResults, 'You lost all your money. Go away.');
-        updateMessages(resultMessage, 'Time for you to leave!');
-    }
 });
 
 
@@ -123,7 +115,7 @@ function checkConfirmBet() {
 }
 
 function showCompThrowImg(computerThrow) {
-    const src = 'Assets/rps/' + computerThrow + '.jpg';
+    const src = 'assets/rps/' + computerThrow + '.jpg';
     compChoiceImg.src = src;
     revealOnPage(compChoiceImg);
 }
