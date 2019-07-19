@@ -1,30 +1,12 @@
 import getPlay from './get-play.js';
 import { rock, paper, scissors } from './get-play.js';
 
-//rock paper scissors game portion
 
 const winCount = document.getElementById('win-count');
 const loseCount = document.getElementById('lose-count');
 const throwButton = document.getElementById('throw-button');
 const resultMessage = document.getElementById('message');
 const compChoiceImg = document.getElementById('comp-choice-img');
-
-let wins = 0;
-let losses = 0;
-let winLose;
-
-
-throwButton.addEventListener('click', () => {
-    const userThrow = document.querySelector('input:checked');
-    const computerThrow = getPlay();
-    showCompThrowImg(computerThrow);
-    gameResultUpdate(userThrow, computerThrow);
-});
-
-
-//betting game portion
-
-
 const startBettingGameButton = document.getElementById('start-betting-game');
 const bettingGame = document.getElementById('betting-game');
 const loadBetButton = document.getElementById('load-bet');
@@ -32,18 +14,31 @@ const userBet = document.getElementById('user-bet');
 const moneyUserHas = document.getElementById('money-user-has');
 const betResults = document.getElementById('bet-results');
 
+let wins = 0;
+let losses = 0;
+let winLose;
 let userBetAmt;
 let moneyUserHasAmt;
 
-
 startBettingGameButton.addEventListener('click', () => {
-    revealOnPage(bettingGame);
-    turnOffButton(startBettingGameButton);
-    turnOffButton(throwButton);
+    startBettingGame();
+});
+
+loadBetButton.addEventListener('click', () => {
+    loadBet();
+});
+
+throwButton.addEventListener('click', () => {
+    const userThrow = document.querySelector('input:checked');
+    const computerThrow = getPlay();
+    showCompThrowImg(computerThrow);
+    gameResultUpdate(userThrow, computerThrow);
+
+    betResult();
 });
 
 
-loadBetButton.addEventListener('click', () => {
+function loadBet() {
     userBetAmt = parseInt(userBet.value);
     moneyUserHasAmt = parseInt(moneyUserHas.textContent);
 
@@ -51,18 +46,19 @@ loadBetButton.addEventListener('click', () => {
     updateMessages(betResults, 'Watch me win.');
     updateMessages(resultMessage, 'Make your choice, punk.');
 
-    checkConfirmBet();
-});
+    checkAndConfirmBet();
+}
 
-throwButton.addEventListener('click', () => {
-    moneyUserHasAmt = parseInt(moneyUserHas.textContent);
-    userBetAmt = parseInt(userBet.value);
-
-    betResult();
-});
-
+function startBettingGame() {
+    revealOnPage(bettingGame);
+    turnOffButton(startBettingGameButton);
+    turnOffButton(throwButton);
+}
 
 function betResult() {
+    userBetAmt = parseInt(userBet.value);
+    moneyUserHasAmt = parseInt(moneyUserHas.textContent);
+
     if(startBettingGameButton.disabled === true && throwButton.disabled === false) {
         if(winLose === 'win') {
             moneyUserHas.textContent = (moneyUserHasAmt + userBetAmt);
@@ -92,7 +88,7 @@ function betResult() {
     }
 }
 
-function checkConfirmBet() {
+function checkAndConfirmBet() {
     if(userBetAmt > moneyUserHasAmt) {
         alert('You don\'t have that much money!');
     }
