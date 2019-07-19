@@ -34,11 +34,10 @@ throwButton.addEventListener('click', () => {
 });
 
 
-function gameResult() {
-    const userThrow = document.querySelector('input:checked');
-    const computerThrow = getPlay();
-    showCompThrowImg(computerThrow);
-    gameResultUpdate(userThrow, computerThrow);
+function startBettingGame() {
+    revealOnPage(bettingGame);
+    turnOffButton(startBettingGameButton);
+    turnOffButton(throwButton);
 }
 
 function loadBet() {
@@ -52,10 +51,33 @@ function loadBet() {
     checkAndConfirmBet();
 }
 
-function startBettingGame() {
-    revealOnPage(bettingGame);
-    turnOffButton(startBettingGameButton);
-    turnOffButton(throwButton);
+function checkAndConfirmBet() {
+    if(userBetAmt > moneyUserHasAmt) {
+        alert('You don\'t have that much money!');
+    }
+    else if(userBetAmt === moneyUserHasAmt) {
+        const allInConfirmation = confirm('You\'re all in, are you sure about that, you can just walk away now??');
+        if(allInConfirmation === true) {
+            alert('Livin on the edge your bet has been placed. Make your choice and throw!');
+            turnOnButton(throwButton);
+            loadBetButton.disabled = true;
+        }
+    }
+    else if(userBetAmt < moneyUserHasAmt) {
+        const betConfirmation = confirm('You bet ' + userBetAmt + '. Are you sure you want to make that bet?');
+        if(betConfirmation === true) {
+            alert('Your bet has been placed. Make your choice and throw!');
+            turnOnButton(throwButton);
+            turnOffButton(loadBetButton);
+        }
+    }
+}
+
+function gameResult() {
+    const userThrow = document.querySelector('input:checked');
+    const computerThrow = getPlay();
+    showCompThrowImg(computerThrow);
+    gameResultUpdate(userThrow, computerThrow);
 }
 
 function betResult() {
@@ -88,28 +110,6 @@ function betResult() {
         turnOffButton(loadBetButton);
         updateMessages(betResults, 'You lost all your money. Go away.');
         updateMessages(resultMessage, 'Time for you to leave!');
-    }
-}
-
-function checkAndConfirmBet() {
-    if(userBetAmt > moneyUserHasAmt) {
-        alert('You don\'t have that much money!');
-    }
-    else if(userBetAmt === moneyUserHasAmt) {
-        const allInConfirmation = confirm('You\'re all in, are you sure about that, you can just walk away now??');
-        if(allInConfirmation === true) {
-            alert('Livin on the edge your bet has been placed. Make your choice and throw!');
-            turnOnButton(throwButton);
-            loadBetButton.disabled = true;
-        }
-    }
-    else if(userBetAmt < moneyUserHasAmt) {
-        const betConfirmation = confirm('You bet ' + userBetAmt + '. Are you sure you want to make that bet?');
-        if(betConfirmation === true) {
-            alert('Your bet has been placed. Make your choice and throw!');
-            turnOnButton(throwButton);
-            turnOffButton(loadBetButton);
-        }
     }
 }
 
