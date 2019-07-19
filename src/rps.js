@@ -29,14 +29,17 @@ loadBetButton.addEventListener('click', () => {
 });
 
 throwButton.addEventListener('click', () => {
+    gameResult();
+    betResult();
+});
+
+
+function gameResult() {
     const userThrow = document.querySelector('input:checked');
     const computerThrow = getPlay();
     showCompThrowImg(computerThrow);
     gameResultUpdate(userThrow, computerThrow);
-
-    betResult();
-});
-
+}
 
 function loadBet() {
     userBetAmt = parseInt(userBet.value);
