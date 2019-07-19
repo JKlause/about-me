@@ -20,6 +20,7 @@ let winLose;
 let userBetAmt;
 let moneyUserHasAmt;
 
+
 startBettingGameButton.addEventListener('click', () => {
     startBettingGame();
 });
