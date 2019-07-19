@@ -117,6 +117,8 @@ function checkConfirmBet() {
 function showCompThrowImg(computerThrow) {
     const src = 'assets/rps/' + computerThrow + '.jpg';
     compChoiceImg.src = src;
+    const alt = computerThrow;
+    compChoiceImg.alt = 'Computer ' + alt + ' choice';
     revealOnPage(compChoiceImg);
 }
 
