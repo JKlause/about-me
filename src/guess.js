@@ -11,6 +11,7 @@ const winResetButton = document.getElementById('win-reset-button');
 const loseResetButton = document.getElementById('lose-reset-button');
 let numberTries;
 let correctNumber;
+let resultSection;
 
 resetTries();
 getNumber();
@@ -39,7 +40,6 @@ button.addEventListener('click', () => {
         addHidden(winSection);
     }
 
-
     triesTracker();
 
     if(numberTries === 0 && result !== 0) {
@@ -53,21 +53,24 @@ button.addEventListener('click', () => {
 
 
 loseResetButton.addEventListener('click', () => {
-    resetTries();
-    getNumber();
-    addHidden(loseSection);
-    buttonControler(button);
+    resultSection = loseSection;
+    initializeReset(resultSection);
 });
 
 
 winResetButton.addEventListener('click', () => {
-    resetTries();
-    getNumber();
-    addHidden(winSection);
-    buttonControler(button);
+    resultSection = winSection;
+    initializeReset(resultSection);
 });
 
 
+
+function initializeReset(resultSection) {
+    resetTries();
+    getNumber();
+    addHidden(resultSection);
+    buttonControler(button);
+}
 
 function addHidden(elementName) {
     elementName.classList.add('hidden');
