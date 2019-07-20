@@ -53,21 +53,21 @@ function loadBet() {
 }
 
 function checkAndConfirmBet() {
-    if(userBetAmt > moneyUserHasAmt) {
-        alert('You don\'t have that much money!');
-    }
-    else if(userBetAmt === moneyUserHasAmt) {
-        const allInConfirmation = confirm('You\'re all in, are you sure about that, you can just walk away now??');
-        if(allInConfirmation === true) {
-            alert('Livin on the edge your bet has been placed. Make your choice and throw!');
+    const confirmBetSelected = document.getElementById('confirm-bet-button').checked;
+
+    if(confirmBetSelected === false) {
+        alert('Please Confirm Your Bet By Checking The "Confirm Bet?" Box');
+    } 
+    else {
+
+        if(userBetAmt > moneyUserHasAmt) {
+            alert('You don\'t have that much money!');
+        } 
+        else if(userBetAmt === moneyUserHasAmt) {
             turnOnButton(throwButton);
-            loadBetButton.disabled = true;
+            turnOffButton(loadBetButton);
         }
-    }
-    else if(userBetAmt < moneyUserHasAmt) {
-        const betConfirmation = confirm('You bet ' + userBetAmt + '. Are you sure you want to make that bet?');
-        if(betConfirmation === true) {
-            alert('Your bet has been placed. Make your choice and throw!');
+        else if(userBetAmt < moneyUserHasAmt) {
             turnOnButton(throwButton);
             turnOffButton(loadBetButton);
         }

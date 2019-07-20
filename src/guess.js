@@ -40,6 +40,11 @@ winResetButton.addEventListener('click', () => {
 });
 
 
+function validateGuess(userGuessIntoNum) {
+    if(userGuessIntoNum > 20 || userGuessIntoNum < 1) {
+        alert('Your guess must be a whole number between 1 and 20');
+    }
+}
 
 function determineResult(compareGuessAndCorrectNum) {
     if(compareGuessAndCorrectNum === 0) {
@@ -65,11 +70,6 @@ function determineResult(compareGuessAndCorrectNum) {
     }
 }
 
-function validateGuess(userGuessIntoNum) {
-    if(userGuessIntoNum > 20 || userGuessIntoNum < 1) {
-        alert('Your guess must be a whole number between 1 and 20');
-    }
-}
 
 function initializeReset(resultSectionToHide) {
     resetNumberofTriesLeft();

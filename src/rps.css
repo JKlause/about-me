@@ -64,3 +64,8 @@ input:checked + .radio-image {
 #rules {
     margin: 5% 0;
 }
+
+#confirm-bet-button {
+    display: inline-block;
+    vertical-align: center;
+}
