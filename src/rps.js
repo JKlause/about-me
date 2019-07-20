@@ -72,6 +72,7 @@ function checkAndConfirmBet() {
             turnOffButton(loadBetButton);
         }
     }
+    //figure out way to turn on bet button and off throw button when confirmBetSelected is turned off
 }
 
 function gameResult() {
