@@ -1,6 +1,7 @@
 import compareNumbers from './compare-numbers.js';
 
-const tries = document.getElementById('tries');
+
+const tries = document.getElementById('tries-left-rendered-space');
 const userGuess = document.getElementById('user-guess');
 const button = document.getElementById('button');
 const tooHigh = document.getElementById('too-high');
@@ -9,46 +10,21 @@ const winSection = document.getElementById('win-section');
 const loseSection = document.getElementById('lose-section');
 const winResetButton = document.getElementById('win-reset-button');
 const loseResetButton = document.getElementById('lose-reset-button');
+
 let numberTries;
 let correctNumber;
 let resultSection;
 
+
 resetTries();
-getNumber();
+getComputerNumber();
 
 
 button.addEventListener('click', () => { 
     const guess = parseInt(userGuess.value);
     const result = compareNumbers(guess, correctNumber);
-
-
-    if(guess > 20 || guess < 1) {
-        alert('Your guess must be a whole number between 1 and 20');
-    }
-
-    
-    if(result === 0) {
-        removeHidden(winSection);
-        addHidden(tooHigh);
-        addHidden(tooLow);
-        buttonControler(button);
-    } else if(result === 1) {
-        removeHidden(tooHigh);
-        addHidden(tooLow);
-    } else if(result === -1) {
-        removeHidden(tooLow);
-        addHidden(winSection);
-    }
-
-    triesTracker();
-
-    if(numberTries === 0 && result !== 0) {
-        removeHidden(loseSection);
-        addHidden(tooLow);
-        addHidden(tooHigh);
-        buttonControler(button);
-    }
-
+    validateGuess(guess);
+    determineResult(result);
 });
 
 
@@ -65,9 +41,39 @@ winResetButton.addEventListener('click', () => {
 
 
 
+function determineResult(result) {
+    if(result === 0) {
+        removeHidden(winSection);
+        addHidden(tooHigh);
+        addHidden(tooLow);
+        buttonControler(button);
+    }
+    else if(result === 1) {
+        removeHidden(tooHigh);
+        addHidden(tooLow);
+    }
+    else if(result === -1) {
+        removeHidden(tooLow);
+        addHidden(winSection);
+    }
+    triesTracker();
+    if(numberTries === 0 && result !== 0) {
+        removeHidden(loseSection);
+        addHidden(tooLow);
+        addHidden(tooHigh);
+        buttonControler(button);
+    }
+}
+
+function validateGuess(guess) {
+    if(guess > 20 || guess < 1) {
+        alert('Your guess must be a whole number between 1 and 20');
+    }
+}
+
 function initializeReset(resultSection) {
     resetTries();
-    getNumber();
+    getComputerNumber();
     addHidden(resultSection);
     buttonControler(button);
 }
@@ -98,6 +104,6 @@ function triesTracker() {
     tries.textContent = numberTries;
 }
 
-function getNumber() {
+function getComputerNumber() {
     correctNumber = Math.round((Math.random() * 19) + 1);
 }
