@@ -13,7 +13,7 @@ const loseResetButton = document.getElementById('lose-reset-button');
 
 let numberOfTriesLeft;
 let correctNumber;
-let resultSection;
+let resultSectionToHide;
 
 
 resetNumberofTriesLeft();
@@ -29,14 +29,14 @@ submitButton.addEventListener('click', () => {
 
 
 loseResetButton.addEventListener('click', () => {
-    resultSection = loseSection;
-    initializeReset(resultSection);
+    resultSectionToHide = loseSection;
+    initializeReset(resultSectionToHide);
 });
 
 
 winResetButton.addEventListener('click', () => {
-    resultSection = winSection;
-    initializeReset(resultSection);
+    resultSectionToHide = winSection;
+    initializeReset(resultSectionToHide);
 });
 
 
@@ -71,26 +71,26 @@ function validateGuess(userGuessIntoNum) {
     }
 }
 
-function initializeReset(resultSection) {
+function initializeReset(resultSectionToHide) {
     resetNumberofTriesLeft();
     getComputerNumber();
-    addHidden(resultSection);
+    addHidden(resultSectionToHide);
     buttonControler(submitButton);
 }
 
-function addHidden(elementName) {
-    elementName.classList.add('hidden');
+function addHidden(elementToHide) {
+    elementToHide.classList.add('hidden');
 }
 
-function removeHidden(elementName) {
-    elementName.classList.remove('hidden');
+function removeHidden(elementToReveal) {
+    elementToReveal.classList.remove('hidden');
 }
 
-function buttonControler(elementName) {
-    if(elementName.disabled === true) {
-        elementName.disabled = false;
+function buttonControler(buttonName) {
+    if(buttonName.disabled === true) {
+        buttonName.disabled = false;
     } else {
-        elementName.disabled = true;
+        buttonName.disabled = true;
     }
 }
 
