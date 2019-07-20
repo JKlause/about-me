@@ -1,30 +1,30 @@
 import compareNumbers from './compare-numbers.js';
 
 
-const tries = document.getElementById('tries-left-rendered-space');
+const triesLeftTextRendering = document.getElementById('tries-left-text-rendering');
 const userGuess = document.getElementById('user-guess');
-const button = document.getElementById('button');
-const tooHigh = document.getElementById('too-high');
-const tooLow = document.getElementById('too-low');
+const submitButton = document.getElementById('submit-button');
+const guessTooHighMsg = document.getElementById('guess-too-high-msg');
+const guessTooLowMsg = document.getElementById('guess-too-low-msg');
 const winSection = document.getElementById('win-section');
 const loseSection = document.getElementById('lose-section');
 const winResetButton = document.getElementById('win-reset-button');
 const loseResetButton = document.getElementById('lose-reset-button');
 
-let numberTries;
+let numberOfTriesLeft;
 let correctNumber;
 let resultSection;
 
 
-resetTries();
+resetNumberofTriesLeft();
 getComputerNumber();
 
 
-button.addEventListener('click', () => { 
-    const guess = parseInt(userGuess.value);
-    const result = compareNumbers(guess, correctNumber);
-    validateGuess(guess);
-    determineResult(result);
+submitButton.addEventListener('click', () => { 
+    const userGuessIntoNum = parseInt(userGuess.value);
+    const compareGuessAndCorrectNum = compareNumbers(userGuessIntoNum, correctNumber);
+    validateGuess(userGuessIntoNum);
+    determineResult(compareGuessAndCorrectNum);
 });
 
 
@@ -41,41 +41,41 @@ winResetButton.addEventListener('click', () => {
 
 
 
-function determineResult(result) {
-    if(result === 0) {
+function determineResult(compareGuessAndCorrectNum) {
+    if(compareGuessAndCorrectNum === 0) {
         removeHidden(winSection);
-        addHidden(tooHigh);
-        addHidden(tooLow);
-        buttonControler(button);
+        addHidden(guessTooHighMsg);
+        addHidden(guessTooLowMsg);
+        buttonControler(submitButton);
     }
-    else if(result === 1) {
-        removeHidden(tooHigh);
-        addHidden(tooLow);
+    else if(compareGuessAndCorrectNum === 1) {
+        removeHidden(guessTooHighMsg);
+        addHidden(guessTooLowMsg);
     }
-    else if(result === -1) {
-        removeHidden(tooLow);
+    else if(compareGuessAndCorrectNum === -1) {
+        removeHidden(guessTooLowMsg);
         addHidden(winSection);
     }
     triesTracker();
-    if(numberTries === 0 && result !== 0) {
+    if(numberOfTriesLeft === 0 && compareGuessAndCorrectNum !== 0) {
         removeHidden(loseSection);
-        addHidden(tooLow);
-        addHidden(tooHigh);
-        buttonControler(button);
+        addHidden(guessTooLowMsg);
+        addHidden(guessTooHighMsg);
+        buttonControler(submitButton);
     }
 }
 
-function validateGuess(guess) {
-    if(guess > 20 || guess < 1) {
+function validateGuess(userGuessIntoNum) {
+    if(userGuessIntoNum > 20 || userGuessIntoNum < 1) {
         alert('Your guess must be a whole number between 1 and 20');
     }
 }
 
 function initializeReset(resultSection) {
-    resetTries();
+    resetNumberofTriesLeft();
     getComputerNumber();
     addHidden(resultSection);
-    buttonControler(button);
+    buttonControler(submitButton);
 }
 
 function addHidden(elementName) {
@@ -94,14 +94,14 @@ function buttonControler(elementName) {
     }
 }
 
-function resetTries() {
-    numberTries = 4;
-    tries.textContent = numberTries;
+function resetNumberofTriesLeft() {
+    numberOfTriesLeft = 4;
+    triesLeftTextRendering.textContent = numberOfTriesLeft;
 }
 
 function triesTracker() {
-    numberTries -= 1;
-    tries.textContent = numberTries;
+    numberOfTriesLeft -= 1;
+    triesLeftTextRendering.textContent = numberOfTriesLeft;
 }
 
 function getComputerNumber() {
