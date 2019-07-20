@@ -1,0 +1,66 @@
+label {
+    cursor: pointer;
+}
+
+section {
+    display: inline-block;
+}
+
+input {
+    display: none;
+}
+
+input:checked + .radio-image {
+    border: 5px solid #64B0C7;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.9);
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+}
+
+.button {
+    height: 50px;
+    width: 120px;
+}
+
+.radio-image {
+    width: 20%;
+    margin: 0 2px;
+    border: 1px solid transparent;
+}
+
+#record {
+    display: flex;
+    justify-content: space-evenly;
+    width: 50%;
+    margin: auto;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
+
+#comp-choice-img {
+    height: 30vw;
+}
+
+#make-your-choice {
+    color: #405178;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+#game-play {
+    width: 48vw;
+}
+
+#betting {
+    width: 48vw;
+}
+
+#user-bet {
+    display: inline-block;
+}
+
+#rules {
+    margin: 5% 0;
+}

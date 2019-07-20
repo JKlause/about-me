@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rock Paper Scissors</title>
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Work+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/main.css">
+    <link rel="stylesheet" href="src/rps.css">
+</head>
+<body>
+    <header>
+        <nav>
+                <a href="./">About Me</a>
+                <a href="guess.html">Guess A Number</a>
+                <a href="rps.html">Rock Paper Scissors</a>
+        </nav>
+        <h1>
+            Rock Paper Scissors!
+        </h1>
+        <h3>
+            You feelin' lucky??
+        </h3>
+    </header>
+
+    <main>
+         <section id="game-play" class="center-justification">
+            <h2 id="make-your-choice">
+                Make your choice!
+            </h2>
+
+            <p id="record">
+                <span>Wins: <span id="win-count">0</span></span>
+                <span>Losses: <span id="lose-count">0</span></span>
+            </p>
+            <p>
+                <label>
+                    <input type="radio" name="user-choice" value="rock" checked>
+                    <img class="radio-image" src="assets/rps/rock.jpg" alt="user rock choice">
+                </label>
+                <label>
+                    <input type="radio" name="user-choice" value="paper">
+                    <img class="radio-image" src="assets/rps/paper.jpg" alt="user paper choice">
+                </label>
+                <label>
+                    <input type="radio" name="user-choice" value="scissors">
+                    <img class="radio-image" src="assets/rps/scissors.jpg" alt="user scissors choice">
+                </label>
+            </p>
+            <p>
+                <button class="button" id="throw-button">Throw</button>
+            </p>
+
+            <p id="message">
+                Make your choice, punk.
+            </p>
+
+            <p id="result">
+                <img id="comp-choice-img" class="invisible" src="assets/rps/rock.jpg">
+            </p>
+        </section>
+
+        <section id="betting" class="center-justification">
+            <h2>
+                Oh, so you think you can take my money??
+            </h2>
+            <button class="button" id="start-betting-game">Start The Betting Game</button>
+            
+            <section id="betting-game" class="invisible">
+                <div id="rules" class="list">
+                    <h3>
+                        The Rules
+                    </h3>
+                    <ul class="left-justification">
+                        <li>You start with a $100.</li>
+                        <li>Use the space provided to place your bet, dollar amounts only.</li>
+                        <li>Load your bet, make your choice, and then Throw.</li>
+                        <li>After you lose all your money, go away.</li>
+                    </ul>
+                </div>
+                <p id="record">
+                    <span>Money You Have: $<span id="money-user-has">100</span></span>
+                </p>
+                <p>
+                    Place Your Bet Here: $<input id="user-bet" max="100" min="1" type="number">
+                    <br>
+                    <br>
+                    <button class="button" id="load-bet">Load Your Bet</button>
+                </p>
+                <p id="bet-results">
+                    Watch me win.
+                </p>
+            </section>
+        </section>
+    </main>
+    
+    <script type="module" src="src/rps.js"></script>
+</body>
+</html>

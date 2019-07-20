@@ -1,0 +1,51 @@
+body {
+    background-color: #DED6CB; 
+    font-family: 'Work Sans', sans-serif;
+    font-size: 20px;
+}
+
+header {
+    text-align: center;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+h1 {
+    color: #405178;
+    font-size: 30px;
+}
+
+h3 {
+    color: #64B0C7;
+}
+
+nav {
+    text-align: left;
+    padding: 3px 0 8px 3%;
+    font-size: 14px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.center-justification {
+    text-align: center;
+}
+
+.left-justification {
+    text-align: left;
+}
+
+.fira-font {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.list {
+    background-color: #736F6D;
+    padding: 5px;
+}
