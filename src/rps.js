@@ -4,6 +4,7 @@ import { rock, paper, scissors } from './get-play.js';
 
 const winCount = document.getElementById('win-count');
 const loseCount = document.getElementById('lose-count');
+const tieCount = document.getElementById('tie-count');
 const throwButton = document.getElementById('throw-button');
 const resultMessage = document.getElementById('message');
 const compChoiceImg = document.getElementById('comp-choice-img');
@@ -14,8 +15,12 @@ const userBet = document.getElementById('user-bet');
 const moneyUserHas = document.getElementById('money-user-has');
 const betResults = document.getElementById('bet-results');
 
+//why is this variable, declared in global scope, not read by load bet button
+// let confirmBetSelected = document.getElementById('confirm-bet-button').checked;
+
 let wins = 0;
 let losses = 0;
+let ties = 0;
 let winLose;
 let userBetAmt;
 let moneyUserHasAmt;
@@ -33,6 +38,7 @@ throwButton.addEventListener('click', () => {
     gameResult();
     betResult();
 });
+
 
 
 function startBettingGame() {
@@ -53,8 +59,9 @@ function loadBet() {
 }
 
 function checkAndConfirmBet() {
+    //why can't this variable be delcared in global scope?
     const confirmBetSelected = document.getElementById('confirm-bet-button').checked;
-
+    
     if(confirmBetSelected === false) {
         alert('Please Confirm Your Bet By Checking The "Confirm Bet?" Box');
     } 
@@ -72,7 +79,7 @@ function checkAndConfirmBet() {
             turnOffButton(loadBetButton);
         }
     }
-    //figure out way to turn on bet button and off throw button when confirmBetSelected is turned off
+    //figure out way to turn on bet button and off throw button when confirmBetSelected is turned off after loading bet
 }
 
 function gameResult() {
@@ -85,8 +92,8 @@ function gameResult() {
 function betResult() {
     userBetAmt = parseInt(userBet.value);
     moneyUserHasAmt = parseInt(moneyUserHas.textContent);
-
-    if(startBettingGameButton.disabled === true && throwButton.disabled === false) {
+    
+    if(startBettingGameButton.disabled && !throwButton.disabled) {
         if(winLose === 'win') {
             moneyUserHas.textContent = (moneyUserHasAmt + userBetAmt);
             updateMessages(betResults, 'How dare you take my money! Let\'s play again!');
@@ -126,6 +133,8 @@ function showCompThrowImg(computerThrow) {
 function gameResultUpdate(userThrow, computerThrow) {
     if(userThrow.value === computerThrow) {
         updateMessages(resultMessage, 'We Tied! Stop Copying Me...');
+        ties++;
+        tieCount.textContent = ties;
         winLose = 'tie';
     }
     if(userThrow.value === rock && computerThrow === scissors ||
