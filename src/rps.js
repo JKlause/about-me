@@ -4,6 +4,7 @@ import { rock, paper, scissors } from './get-play.js';
 
 const winCount = document.getElementById('win-count');
 const loseCount = document.getElementById('lose-count');
+const tiesCount = document.getElementById('ties-count');
 const throwButton = document.getElementById('throw-button');
 const resultMessage = document.getElementById('message');
 const compChoiceImg = document.getElementById('comp-choice-img');
@@ -16,6 +17,7 @@ const betResults = document.getElementById('bet-results');
 
 let wins = 0;
 let losses = 0;
+let ties = 0;
 let winLose;
 let userBetAmt;
 let moneyUserHasAmt;
@@ -125,6 +127,8 @@ function showCompThrowImg(computerThrow) {
 function gameResultUpdate(userThrow, computerThrow) {
     if(userThrow.value === computerThrow) {
         updateMessages(resultMessage, 'We Tied! Stop Copying Me...');
+        ties++;
+        tiesCount.textContent = ties;
         winLose = 'tie';
     }
     if(userThrow.value === rock && computerThrow === scissors ||
