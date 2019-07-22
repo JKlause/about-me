@@ -4,6 +4,7 @@ import { rock, paper, scissors } from './get-play.js';
 
 const winCount = document.getElementById('win-count');
 const loseCount = document.getElementById('lose-count');
+const tiesCount = document.getElementById('ties-count');
 const throwButton = document.getElementById('throw-button');
 const resultMessage = document.getElementById('message');
 const compChoiceImg = document.getElementById('comp-choice-img');
@@ -16,6 +17,7 @@ const betResults = document.getElementById('bet-results');
 
 let wins = 0;
 let losses = 0;
+let ties = 0;
 let winLose;
 let userBetAmt;
 let moneyUserHasAmt;
@@ -49,28 +51,21 @@ function loadBet() {
     updateMessages(betResults, 'Watch me win.');
     updateMessages(resultMessage, 'Make your choice, punk.');
 
-    checkAndConfirmBet();
+    checkBet();
 }
 
-function checkAndConfirmBet() {
-    const confirmBetSelected = document.getElementById('confirm-bet-button').checked;
-
-    if(confirmBetSelected === false) {
-        alert('Please Confirm Your Bet By Checking The "Confirm Bet?" Box');
+function checkBet() {
+    if(userBetAmt > moneyUserHasAmt) {
+        alert('You don\'t have that much money!');
     } 
-    else {
-
-        if(userBetAmt > moneyUserHasAmt) {
-            alert('You don\'t have that much money!');
-        } 
-        else if(userBetAmt === moneyUserHasAmt) {
-            turnOnButton(throwButton);
-            turnOffButton(loadBetButton);
-        }
-        else if(userBetAmt < moneyUserHasAmt) {
-            turnOnButton(throwButton);
-            turnOffButton(loadBetButton);
-        }
+    else if(userBetAmt === moneyUserHasAmt) {
+        alert('You\'re All In!!');
+        turnOnButton(throwButton);
+        turnOffButton(loadBetButton);
+    }
+    else if(userBetAmt < moneyUserHasAmt) {
+        turnOnButton(throwButton);
+        turnOffButton(loadBetButton);
     }
 }
 
@@ -125,6 +120,8 @@ function showCompThrowImg(computerThrow) {
 function gameResultUpdate(userThrow, computerThrow) {
     if(userThrow.value === computerThrow) {
         updateMessages(resultMessage, 'We Tied! Stop Copying Me...');
+        ties++;
+        tiesCount.textContent = ties;
         winLose = 'tie';
     }
     if(userThrow.value === rock && computerThrow === scissors ||

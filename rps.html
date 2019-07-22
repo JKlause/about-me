@@ -33,6 +33,7 @@
             <p id="record">
                 <span>Wins: <span id="win-count">0</span></span>
                 <span>Losses: <span id="lose-count">0</span></span>
+                <span>Ties: <span id="ties-count">0</span></span>
             </p>
             <p>
                 <label>
@@ -75,7 +76,7 @@
                     <ul class="left-justification">
                         <li>You start with a $100.</li>
                         <li>Use the space provided to place your bet, dollar amounts only.</li>
-                        <li>Confirm and Load your bet, make your choice, and then Throw.</li>
+                        <li>Load your bet, make your choice, and then Throw.</li>
                         <li>After you lose all your money, go away.</li>
                     </ul>
                 </div>
@@ -84,9 +85,6 @@
                 </p>
                 <p>
                     Place Your Bet Here: $<input id="user-bet" max="100" min="1" type="number">
-                    <br>
-                    <br>
-                    Confirm Bet?: <input id="confirm-bet-button" type="checkbox">
                     <br>
                     <br>
                     <button class="button" id="load-bet">Load Your Bet</button>
