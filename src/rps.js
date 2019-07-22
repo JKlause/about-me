@@ -22,6 +22,7 @@ let winLose;
 let userBetAmt;
 let moneyUserHasAmt;
 
+//making a change for a pull request!
 
 startBettingGameButton.addEventListener('click', () => {
     startBettingGame();
