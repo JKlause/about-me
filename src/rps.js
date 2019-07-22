@@ -62,10 +62,12 @@ function checkBet() {
         alert('You\'re All In!!');
         turnOnButton(throwButton);
         turnOffButton(loadBetButton);
+        turnOffButton(userBet);
     }
     else if(userBetAmt < moneyUserHasAmt) {
         turnOnButton(throwButton);
         turnOffButton(loadBetButton);
+        turnOffButton(userBet);
     }
 }
 
@@ -86,18 +88,21 @@ function betResult() {
             updateMessages(betResults, 'How dare you take my money! Let\'s play again!');
             turnOffButton(throwButton);
             turnOnButton(loadBetButton);
+            turnOnButton(userBet);
         }
         else if(winLose === 'lose') {
             moneyUserHas.textContent = (moneyUserHasAmt - userBetAmt);
             updateMessages(betResults, 'HAHAHA You lost your money to me! Let\'s play again!');
             turnOffButton(throwButton);
             turnOnButton(loadBetButton);
+            turnOnButton(userBet);
         }
         else if(winLose === 'tie') {
             moneyUserHas.textContent = moneyUserHasAmt;
             updateMessages(betResults, 'We tied... but I\'ll get your money soon.');
             turnOffButton(throwButton);
             turnOnButton(loadBetButton);
+            turnOnButton(userBet);
         }
     }
     if(moneyUserHas.textContent === '0') {
