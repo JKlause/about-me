@@ -51,28 +51,21 @@ function loadBet() {
     updateMessages(betResults, 'Watch me win.');
     updateMessages(resultMessage, 'Make your choice, punk.');
 
-    checkAndConfirmBet();
+    checkBet();
 }
 
-function checkAndConfirmBet() {
-    const confirmBetSelected = document.getElementById('confirm-bet-button').checked;
-
-    if(confirmBetSelected === false) {
-        alert('Please Confirm Your Bet By Checking The "Confirm Bet?" Box');
+function checkBet() {
+    if(userBetAmt > moneyUserHasAmt) {
+        alert('You don\'t have that much money!');
     } 
-    else {
-
-        if(userBetAmt > moneyUserHasAmt) {
-            alert('You don\'t have that much money!');
-        } 
-        else if(userBetAmt === moneyUserHasAmt) {
-            turnOnButton(throwButton);
-            turnOffButton(loadBetButton);
-        }
-        else if(userBetAmt < moneyUserHasAmt) {
-            turnOnButton(throwButton);
-            turnOffButton(loadBetButton);
-        }
+    else if(userBetAmt === moneyUserHasAmt) {
+        alert('You\'re All In!!');
+        turnOnButton(throwButton);
+        turnOffButton(loadBetButton);
+    }
+    else if(userBetAmt < moneyUserHasAmt) {
+        turnOnButton(throwButton);
+        turnOffButton(loadBetButton);
     }
 }
 
